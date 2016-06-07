@@ -130,6 +130,7 @@ public class TestMebGet {
 				response = xm.readValue(rspSb.toString(), jt);
 			}
 
+			System.out.println(postData);
 			System.out.println(response);
 			System.out.println(rspSb.toString());
 		} catch (Throwable ex) {

@@ -1,20 +1,16 @@
 package com.shanxin.meb.service.entity.response;
 
 import java.util.Date;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.shanxin.core.api.ApiResponse;
 import com.shanxin.core.fastxml.jackson.ser.JsonStr2DatetimeDeserializer;
 import com.shanxin.core.fastxml.jackson.ser.JsonStr2DatetimeSerializer;
-import com.shanxin.meb.service.entity.MebProperty;
 
 @JacksonXmlRootElement(localName = "mebLoginResponse")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -22,6 +18,7 @@ import com.shanxin.meb.service.entity.MebProperty;
 public class MebLoginResponse extends ApiResponse {
 	private int mebId;
 	private String name;
+	private String realName;
 	private String nickName;
 	@JsonSerialize(using = JsonStr2DatetimeSerializer.class)
 	@JsonDeserialize(using = JsonStr2DatetimeDeserializer.class)
@@ -32,10 +29,6 @@ public class MebLoginResponse extends ApiResponse {
 	private Date lastUpdateTime;
 	private Integer lastUpdateOprtId;
 	private String remark;
-
-	@JacksonXmlElementWrapper(localName = "mebProperties")
-	@JacksonXmlProperty(localName = "mebProperty")
-	private List<MebProperty> mebProperties;
 
 	public int getMebId() {
 		return mebId;
@@ -51,6 +44,14 @@ public class MebLoginResponse extends ApiResponse {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
 	}
 
 	public String getNickName() {
@@ -99,14 +100,6 @@ public class MebLoginResponse extends ApiResponse {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
-	}
-
-	public List<MebProperty> getMebProperties() {
-		return mebProperties;
-	}
-
-	public void setMebProperties(List<MebProperty> mebProperties) {
-		this.mebProperties = mebProperties;
 	}
 
 }

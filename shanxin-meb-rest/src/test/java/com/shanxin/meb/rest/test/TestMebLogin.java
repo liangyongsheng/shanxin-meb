@@ -23,9 +23,9 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.shanxin.core.api.Response;
 import com.shanxin.core.util.MyAlgorithmUtils;
 import com.shanxin.core.util.MyStringUtils;
-import com.shanxin.meb.service.entity.request.MebQueryRequest;
+import com.shanxin.meb.service.entity.request.MebLoginRequest;
 
-public class TestMebQuery {
+public class TestMebLogin {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void doTest() {
@@ -34,16 +34,15 @@ public class TestMebQuery {
 			String contentType = MediaType.APPLICATION_JSON_VALUE;
 			String accept = MediaType.APPLICATION_JSON_VALUE;
 
-			MebQueryRequest request = new MebQueryRequest();
+			MebLoginRequest request = new MebLoginRequest();
 			request.setMethod(request.getLocalMothedName());
 			request.setTimestamp(new Date());
 			request.setOprtId(2);
 			request.setOprtSecret("9a4fbddd6da2e05e56e5e5f76097a380");
 			request.setOprtAccessToken("0bca08b7060c7bf03c69a5a12f14aebf77a493b19fc711bc62b51795082a2398");
-			// request.setMebId(1);
-			// request.setMobile("18674850202");
-			request.setPageIndex(2);
-			request.setPageCount(1);//MebQueryRequest.MAX_PAGE_COUNT);
+			request.setLoginType(1);
+			request.setLoginName("18674850202");
+			request.setLoginPwd("123456");
 
 			// POST数据
 			String postData = "";
@@ -83,7 +82,7 @@ public class TestMebQuery {
 				postData = tmpUrlencodedPost;
 				sign = tmpUrlencodeSign;
 			}
-
+			
 			URL url = new URL(requstUrl);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
@@ -133,7 +132,6 @@ public class TestMebQuery {
 				response = xm.readValue(rspSb.toString(), jt);
 			}
 
-			System.out.println(postData);
 			System.out.println(response);
 			System.out.println(rspSb.toString());
 		} catch (Throwable ex) {

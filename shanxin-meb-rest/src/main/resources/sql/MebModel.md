@@ -26,7 +26,12 @@ queryMeb
 ===
 *-----------------------------------------------
 
-	select #use("cols")# from meb where #use("queryMebCondt")# #use("queryMebLmt")#
+	select
+			#use("cols")# 
+		from 
+			meb 
+		where 
+			#use("queryMebCondt")# #use("queryMebLmt")#
 queryMebCondt
 ===
 	1 = 1

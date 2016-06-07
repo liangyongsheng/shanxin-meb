@@ -7,23 +7,32 @@ import com.shanxin.core.util.MyStringUtils;
 import com.shanxin.meb.service.entity.response.MebLoginResponse;
 
 public class MebLoginRequest extends ApiRequest<MebLoginResponse> {
-	private String name;
-	private String pwd;
+	private Integer loginType;// 1：为手机号
+	private String loginName;
+	private String loginPwd;
 
-	public String getName() {
-		return name;
+	public Integer getLoginType() {
+		return loginType;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setLoginType(Integer loginType) {
+		this.loginType = loginType;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getLoginName() {
+		return loginName;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+
+	public String getLoginPwd() {
+		return loginPwd;
+	}
+
+	public void setLoginPwd(String loginPwd) {
+		this.loginPwd = loginPwd;
 	}
 
 	@Override
@@ -38,9 +47,11 @@ public class MebLoginRequest extends ApiRequest<MebLoginResponse> {
 
 	@Override
 	public void checkApiParams() throws CheckException {
-		if (MyStringUtils.isEmpty(this.name))
+		if (this.loginType == null || this.loginType != 1)
+			throw new CheckIllicitValueException("field: loginType, value is illicit.");
+		if (MyStringUtils.isEmpty(this.loginName))
 			throw new CheckIllicitValueException("field: name, value is empty.");
-		if (MyStringUtils.isEmpty(this.pwd))
+		if (MyStringUtils.isEmpty(this.loginPwd))
 			throw new CheckIllicitValueException("field: pwd, value is empty.");
 
 	}

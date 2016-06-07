@@ -57,6 +57,7 @@ public class MebGetBo extends ApiBo<MebGetRequest> {
 			rsp.setLastUpdateTime(mebModel.getCreateTime());
 			rsp.setMebId(mebModel.getId());
 			rsp.setName(mebModel.getName());
+			rsp.setRealName(mebModel.getRealName());
 			rsp.setNickName(mebModel.getNickName());
 			rsp.setRemark(mebModel.getRemark());
 

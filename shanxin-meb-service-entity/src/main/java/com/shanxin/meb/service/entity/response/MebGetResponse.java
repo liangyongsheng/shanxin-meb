@@ -22,6 +22,7 @@ import com.shanxin.meb.service.entity.MebProperty;
 public class MebGetResponse extends ApiResponse {
 	private int mebId;
 	private String name;
+	private String realName;
 	private String nickName;
 	@JsonSerialize(using = JsonStr2DatetimeSerializer.class)
 	@JsonDeserialize(using = JsonStr2DatetimeDeserializer.class)
@@ -51,6 +52,14 @@ public class MebGetResponse extends ApiResponse {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
 	}
 
 	public String getNickName() {
